@@ -20,7 +20,7 @@ jobs:
       - run: echo ${{ github.ref }}
       - run: echo ${{ github.event_name }}
       - run: echo "This is not a prerelease!!1!"
-        if: success() && !(endsWith( github.ref, '-prerelease')) && matrix.os == 'ubuntu-latest'
+        if: success() && !github.event.release.prerelease && matrix.os == 'ubuntu-latest'
 
     # - name: Checkout
     #   uses: actions/checkout@v3
