@@ -44,11 +44,11 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - name: Publish Release to VS Code Marketplace
-      if: "!github.event.release.prerelease"
-      run: npm run publish
+    # - name: Publish Release to VS Code Marketplace
+    #   if: "!github.event.release.prerelease"
+    #   run: npm run publish
     - name: Create package for pre-release
-      if: github.event.release.prerelease
+      # if: github.event.release.prerelease
       run: |
         npm install
         npm run compile

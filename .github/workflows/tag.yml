@@ -1,6 +1,12 @@
 name: Tag Release
 on:
   workflow_dispatch:
+    inputs:
+      prerelease:
+        description: 'Check the box if this a prerelease'
+        default: false
+        required: true
+        type: boolean
 
 jobs:
   tag:
@@ -19,3 +25,4 @@ jobs:
       with:
         tag_name: ${{ steps.find_tag.outputs.TAG }}
         token: ${{ secrets.VSCE_PAT }}
+        prerelease: ${{ inputs.prerelease }}
