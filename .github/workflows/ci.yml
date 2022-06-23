@@ -50,8 +50,8 @@ jobs:
     - name: Create package for pre-release
       # if: github.event.release.prerelease
       run: |
-        pwd
-        ls -lhrta
+        npm install
+        npm run compile
         npm run package
     - name: Upload package to release
       uses: actions/upload-artifact@v3
