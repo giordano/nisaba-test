@@ -39,7 +39,7 @@ jobs:
   publishRelease:
     name: Publish Release
     needs: [tests]
-    if: startsWith(github.ref, 'refs/tags/releases/')
+    if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     steps:
     - name: Publish Release to VS Code Marketplace
