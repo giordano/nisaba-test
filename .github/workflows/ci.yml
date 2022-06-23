@@ -28,12 +28,12 @@ jobs:
         node-version: ${{ matrix.node }}
     - name: Compile
       run: npm install && npm run compile
-    - name: Run tests on Linux with xvfb-run
-      run: xvfb-run -a npm test
-      if: runner.os == 'Linux'
-    - name: Run tests on Windows or macOS
-      run: npm test
-      if: runner.os != 'Linux'
+    # - name: Run tests on Linux with xvfb-run
+    #   run: xvfb-run -a npm test
+    #   if: runner.os == 'Linux'
+    # - name: Run tests on Windows or macOS
+    #   run: npm test
+    #   if: runner.os != 'Linux'
 
   publishRelease:
     name: Publish Release
