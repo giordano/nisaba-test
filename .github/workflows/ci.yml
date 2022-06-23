@@ -39,15 +39,18 @@ jobs:
   publishRelease:
     name: Publish Release
     needs: [tests]
-    if: startsWith(github.ref, 'refs/tags/')
+    # if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     steps:
-    - name: Publish Release to VS Code Marketplace
-      if: "!github.event.release.prerelease"
-      run: npm run publish
+    # - name: Publish Release to VS Code Marketplace
+    #   if: "!github.event.release.prerelease"
+    #   run: npm run publish
     - name: Create package for pre-release
-      if: github.event.release.prerelease
-      run: npm run package
+      # if: github.event.release.prerelease
+      run: |
+        pwd
+        ls -lhrta
+        npm run package
     - name: Upload package to release
       uses: actions/upload-artifact@v3
       with:
