@@ -54,7 +54,6 @@ jobs:
         npm run compile
         npm run package
     - name: Upload package to release
-      uses: actions/upload-artifact@v3
+      uses: softprops/action-gh-release@v1
       with:
-        name: release-vsix
-        path: '*.vsix'
+        files: '*.vsix'
