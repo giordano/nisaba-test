@@ -14,12 +14,8 @@ jobs:
         TAG="v$(jq -M .version package.json | tr -d '"'| tr -d \')"
         echo "Tag: ${TAG}"
         echo "::set-output name=TAG::${TAG}"
-    # - name: Create tag
-    #   uses: anothrNick/github-tag-action@1.39.0
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #     CUSTOM_TAG: ${{ steps.find_tag.outputs.TAG }}
     - name: Create release
       uses: softprops/action-gh-release@v1
       with:
         tag_name: ${{ steps.find_tag.outputs.TAG }}
+        token: ${{ secrets.VSCE_PAT }}
