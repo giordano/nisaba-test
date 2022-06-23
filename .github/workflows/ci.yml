@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Publish Release to VS Code Marketplace
-      if: !github.event.release.prerelease
+      if: "!github.event.release.prerelease"
       run: npm run publish
     - name: Upload package to release
       uses: actions/upload-artifact@v3
