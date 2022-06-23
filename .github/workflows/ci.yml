@@ -45,6 +45,9 @@ jobs:
     - name: Publish Release to VS Code Marketplace
       if: "!github.event.release.prerelease"
       run: npm run publish
+    - name: Create package for pre-release
+      if: github.event.release.prerelease
+      run: npm run package
     - name: Upload package to release
       uses: actions/upload-artifact@v3
       with:
