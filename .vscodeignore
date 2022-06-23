@@ -1,0 +1,18 @@
+.vscode/**
+.vscode-test/**
+.gitignore
+.github/**
+docs/**
+media/**
+python/**
+node_modules/**
+out/**
+src/**
+*.vsix
+azure-pipelines.yml
+tsconfig.json
+webpack.config.js
+
+## Files to keep
+# This screenshot is used in the README
+!media/nisaba_ar_en_belsunu.png
