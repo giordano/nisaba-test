@@ -8,14 +8,18 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - name: Create tag
-      id: create_tag
+    - name: Find tag
+      id: find_tag
       run: |
         TAG="v$(jq -M .version package.json | tr -d '"'| tr -d \')"
         echo "Tag: ${TAG}"
         echo "::set-output name=TAG::${TAG}"
-    - name: Bump version and push tag
-      uses: anothrNick/github-tag-action@1.39.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        CUSTOM_TAG: ${{ steps.create_tag.outputs.TAG }}
+    # - name: Create tag
+    #   uses: anothrNick/github-tag-action@1.39.0
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #     CUSTOM_TAG: ${{ steps.find_tag.outputs.TAG }}
+    - name: Create release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ steps.find_tag.outputs.TAG }}
